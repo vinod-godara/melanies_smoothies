@@ -40,11 +40,11 @@ if ingredients_list:
             values ('""" + ingredient_string + """','""" + name_on_order + """')"""
     # st.write(my_insert_stmt)
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json())
-
     time_to_insert = st.button("Submit Order")
     if time_to_insert:
     # if ingredient_string:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response.json())
